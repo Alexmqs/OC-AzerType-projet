@@ -23,7 +23,8 @@ function afficherResultat (score, nbMotsProposes) {
     return score
  }
 
- function lancerJeu() {
+ 
+function lancerJeu() {
     let choix = choisirPhrasesOuMots()
     let score = 0
     let nbMotsProposes = 0
@@ -39,5 +40,3 @@ function afficherResultat (score, nbMotsProposes) {
     afficherResultat(score, nbMotsProposes)
     
  }
-
- lancerJeu()
