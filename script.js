@@ -1,46 +1,43 @@
-/*const motApplication = "Test" 
-let motUtilisateur = prompt("Entrez le mot : " + motApplication)
+function afficherResultat (score, nbMotsProposes) {
+//Affiche le score du joueur
+    console.log("Votre score est de " + score + " sur " + nbMotsProposes)
+ }
 
-if (motUtilisateur === motApplication) {
-    console.log("Bravo !")
-} else {
-    console.log("Vous avez fait une erreur de frappe.")
-}*/
+ function choisirPhrasesOuMots() {
+    let choix = prompt("Avec quelle liste désirez-vous jouer : 'mots' ou 'phrases' ?")
 
-const listeMots = ["Cachalot", "Pétunia", "Serviette"]
-let score = 0
+    while (choix !== "mots" && choix !== "phrases") {
+        choix = prompt("Avec quelle liste désirez-vous jouer : 'mots' ou 'phrases' ?")
+    }
+    return choix
+ }
+  
+ function lancerBoucleDeJeu (listePropositions) {
+    let score = 0
+    for (let i = 0; i < listePropositions.length; i++) {
+        let motUtilisateur = prompt("Entrez le mot : " + listeMots[i])
+        if (motUtilisateur === listeMots[i]) {
+            score++
+        }
+    }
+    return score
+ }
 
-let motUtilisateur = prompt("Entrez le mot : " + listeMots[0])
+ function lancerJeu() {
+    let choix = choisirPhrasesOuMots()
+    let score = 0
+    let nbMotsProposes = 0
 
+    if (choix === 'mots') {
+        score = lancerBoucleDeJeu(listeMots)
+        nbMotsProposes = listeMots.length
+    } else {
+        lancerBoucleDeJeu(listePhrases)
+        score =nbMotsProposes = listePhrases.length
+    }
 
+    afficherResultat(score, nbMotsProposes)
+    
+ }
 
-if (motUtilisateur === listeMots[0]) {
-    console.log("Bravo !")
-    score++
-    console.log(score)
-} else {
-    console.log("Vous avez fait une erreur de frappe.")
-    console.log(score)
-}
-
-
-motUtilisateur = prompt('Entrez le mot : ' + listeMots[1])
-if (motUtilisateur === listeMots[1]) {
-    console.log("Bravo !")
-    score++
-    console.log(score)
-} else {
-    console.log("Vous avez fait une erreur de frappe.")
-    console.log(score)
-}
-
-
-motUtilisateur = prompt('Entrez le mot : ' + listeMots[2])
-if (motUtilisateur === listeMots[2]) {
-    console.log("Bravo !")
-    score++
-    console.log(score)
-} else {
-    console.log("Vous avez fait une erreur de frappe.")
-    console.log(score)
-}
+ lancerJeu()
